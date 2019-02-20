@@ -1,0 +1,53 @@
+{
+	"name": "riverd-xcursor",
+	"description": "Dynamic and static D bindings for X cursor management library",
+	"copyright": "Copyright © 2019, Aurora Free Open Source Software",
+	"license": "LGPL-3.0",
+	"authors": [
+		"Luís Ferreira"
+	],
+	"targetType": "staticLibrary",
+	"targetPath": ".out/bin",
+	"importPaths": ["source"],
+	"sourcePaths": ["source"],
+	"dependencies": {
+		"riverd-x11": "~>0.1.1"
+	},
+	"subConfigurations": {
+		"riverd-x11": "types-import"
+	},
+	"configurations": [
+		{
+			"name": "static",
+			"versions": ["RiverD_Xcursor_Static"],
+			"libs": [
+				"xcursor"
+			],
+			"excludedSourceFiles": [
+				"source/riverd/xcursor/dynfun.d",
+				"source/riverd/xcursor/dynload.d"
+			]
+		},
+		{
+			"name": "dynamic",
+			"dependencies": {
+				"riverd-core": "~>1.0.1"
+			},
+			"excludedSourceFiles": [
+				"source/riverd/xcursor/statfun.d"
+			]
+		},
+		{
+			"name": "dynamic-betterc",
+			"dependencies": {
+				"riverd-core": "~>1.0.1"
+			},
+			"subConfigurations": {
+				"riverd-core": "betterc"
+			},
+			"excludedSourceFiles": [
+				"source/riverd/xcursor/statfun.d"
+			]
+		}
+	]
+}
