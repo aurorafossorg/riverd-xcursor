@@ -13,10 +13,17 @@
 	"dependencies": {
 		"riverd-x11": "~>0.1.1"
 	},
-	"subConfigurations": {
-		"riverd-x11": "types-import"
-	},
 	"configurations": [
+		{
+			"name": "types-import",
+			"targetType": "sourceLibrary",
+			"excludedSourceFiles": [
+				"source/riverd/xcursor/dynfun.d",
+				"source/riverd/xcursor/dynload.d",
+				"source/riverd/xcursor/package.d",
+				"source/riverd/xcursor/statfun.d"
+			]
+		},
 		{
 			"name": "static",
 			"versions": ["RiverD_Xcursor_Static"],
